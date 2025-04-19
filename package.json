@@ -1,0 +1,28 @@
+{
+  "name": "ideanick",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "b": "pnpm --filter @ideanick/server",
+    "w": "pnpm --filter @ideanick/client",
+    "dev": "pnpm -r --parallel dev",
+    "types": "concurrently \"pnpm b types\" \"pnpm w types\"",
+    "prettify": "pnpm -r --parallel prettify",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.25.0",
+    "@eslint/migrate-config": "^1.4.1",
+    "@typescript-eslint/eslint-plugin": "^8.30.1",
+    "concurrently": "^9.1.2",
+    "eslint": "^9.25.0",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-config-react-app": "^7.0.1",
+    "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-plugin-jsx-ally": "^6.0.3",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.1",
+    "prettier": "^3.5.3"
+  }
+}
