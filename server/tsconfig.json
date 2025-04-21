@@ -23,7 +23,8 @@
     "moduleResolution": "node",
     "target": "ES2021",
     "noUnusedParameters": true,
-    "noUnusedLocals": true
+    "noUnusedLocals": true,
+    "composite": true
   },
   "include": ["src"]
 }
