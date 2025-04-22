@@ -1,15 +1,17 @@
 import { FormikProps } from 'formik';
-import classes from './styles.module.scss';
+import styles from './styles.module.scss';
 import cn from 'classnames';
+import { HTMLInputTypeAttribute } from 'react';
 
 interface IProps {
   name: string;
   label: string;
   formik: FormikProps<any>;
   maxWidth?: number;
+  type?: HTMLInputTypeAttribute;
 }
 
-const Input = ({ name, label, formik, maxWidth }: IProps) => {
+const Input = ({ name, label, formik, maxWidth, type = 'text' }: IProps) => {
   const value = formik.values[name];
   const error = formik.errors[name] as string | undefined;
   const touched = formik.touched[name];
@@ -17,20 +19,20 @@ const Input = ({ name, label, formik, maxWidth }: IProps) => {
 
   return (
     <div
-      className={cn(classes.field, {
-        [classes.disabled]: formik.isSubmitting,
+      className={cn(styles.field, {
+        [styles.disabled]: formik.isSubmitting,
       })}
     >
-      <label className={classes.label} htmlFor={name}>
+      <label className={styles.label} htmlFor={name}>
         {label}
       </label>
       <input
         className={cn({
-          [classes.input]: true,
-          [classes.invalid]: invalid,
+          [styles.input]: true,
+          [styles.invalid]: invalid,
         })}
         style={{ maxWidth }}
-        type="text"
+        type={type}
         onChange={(e) => {
           formik.setFieldValue(name, e.target.value);
         }}
@@ -42,7 +44,7 @@ const Input = ({ name, label, formik, maxWidth }: IProps) => {
         id={name}
         disabled={formik.isSubmitting}
       />
-      {invalid && <p className={classes.error}>{error}</p>}
+      {invalid && <p className={styles.error}>{error}</p>}
     </div>
   );
 };

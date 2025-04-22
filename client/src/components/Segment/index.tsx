@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import classes from './styles.module.scss';
+import styles from './styles.module.scss';
 
 interface IProps {
   title: React.ReactNode;
@@ -9,10 +9,10 @@ interface IProps {
 }
 
 const Segment: FC<IProps> = ({ title, size = 1, description, children }) => (
-  <div className={classes.segment}>
-    {size === 1 ? <h1 className={classes.title}>{title}</h1> : <h2 className={classes.title}>{title}</h2>}
-    {description && <p className={classes.description}>{description}</p>}
-    {children && <div className={classes.content}>{children}</div>}
+  <div className={styles.segment}>
+    {size === 1 ? <h1 className={styles.title}>{title}</h1> : <h2 className={styles.title}>{title}</h2>}
+    {description && <p className={styles.description}>{description}</p>}
+    {children && <div className={styles.content}>{children}</div>}
   </div>
 );
 

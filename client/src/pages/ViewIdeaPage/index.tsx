@@ -1,8 +1,9 @@
 import { useParams } from 'react-router-dom';
 import { ViewIdeaRouteParams } from '../../lib/routes';
 import { trpc } from '../../lib/trpc';
-import classes from './index.module.scss';
+import styles from './styles.module.scss';
 import Segment from '../../components/Segment';
+import { format } from 'date-fns';
 
 const ViewIdeaPage = () => {
   const { ideaNick = '' } = useParams<ViewIdeaRouteParams>();
@@ -22,7 +23,8 @@ const ViewIdeaPage = () => {
 
   return (
     <Segment title={data.idea.name} description={data.idea.description}>
-      <div className={classes.text} dangerouslySetInnerHTML={{ __html: data.idea.text }} />
+      <div className={styles.createdAt}>Created At: {format(data.idea.createdAt, 'yyyy-MM-dd')}</div>
+      <div className={styles.text} dangerouslySetInnerHTML={{ __html: data.idea.text }} />
     </Segment>
   );
 };

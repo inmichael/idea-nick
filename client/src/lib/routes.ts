@@ -8,6 +8,9 @@ export type ViewIdeaRouteParams = typeof viewIdeaRouteParams;
 export const routes = {
   allIdeasRoute: '/',
   newIdeaRoute: '/ideas/new',
+  signUpRoute: '/sign-up',
+  signInRoute: '/sign-in',
+  signOutRoute: '/sign-out',
   viewIdeaRoute: ({ ideaNick }: ViewIdeaRouteParams) => `/ideas/${ideaNick}`,
 };
 

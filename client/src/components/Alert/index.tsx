@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import classes from './styles.module.scss';
+import styles from './styles.module.scss';
 
 interface IProps {
   color: 'red' | 'green';
@@ -7,7 +7,7 @@ interface IProps {
 }
 
 const Alert = ({ color, children }: IProps) => {
-  return <div className={cn({ [classes.alert]: true, [classes[color]]: true })}>{children}</div>;
+  return <div className={cn({ [styles.alert]: true, [styles[color]]: true })}>{children}</div>;
 };
 
 export default Alert;

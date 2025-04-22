@@ -1,5 +1,5 @@
 import { FormikProps } from 'formik';
-import classes from './styles.module.scss';
+import styles from './styles.module.scss';
 import cn from 'classnames';
 
 interface IProps {
@@ -16,17 +16,17 @@ const Textarea = ({ name, label, formik }: IProps) => {
 
   return (
     <div
-      className={cn(classes.field, {
-        [classes.disabled]: formik.isSubmitting,
+      className={cn(styles.field, {
+        [styles.disabled]: formik.isSubmitting,
       })}
     >
-      <label className={classes.label} htmlFor={name}>
+      <label className={styles.label} htmlFor={name}>
         {label}
       </label>
       <textarea
         className={cn({
-          [classes.input]: true,
-          [classes.invalid]: invalid,
+          [styles.input]: true,
+          [styles.invalid]: invalid,
         })}
         onChange={(e) => {
           formik.setFieldValue(name, e.target.value);
@@ -36,7 +36,7 @@ const Textarea = ({ name, label, formik }: IProps) => {
         value={value}
         disabled={formik.isSubmitting}
       />
-      {invalid && <p className={classes.error}>{error}</p>}
+      {invalid && <p className={styles.error}>{error}</p>}
     </div>
   );
 };
