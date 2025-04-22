@@ -1,0 +1,5 @@
+{
+  "cSpell.words": ["ideanick"],
+  "eslint.workingDirectories": ["server", "client"],
+  "importCost.debug": false
+}

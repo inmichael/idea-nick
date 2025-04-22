@@ -1,0 +1,53 @@
+{
+  "name": "@ideanick/server",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "ts-node-dev --watch ./.env --rs ./src/index.ts",
+    "build": "rimraf ./dist && tsc --build ./tsconfig.json",
+    "start": "node ./dist/index.js",
+    "pmd": "prisma migrate dev",
+    "pmr": "prisma migrate reset",
+    "pgc": "prisma generate",
+    "types": "tsc --noEmit --project ./tsconfig.json",
+    "prettify": "prettier --loglevel warn --cache '{src/**/*,*}.{ts,tsx,js,json,yml,scss}' '!**/{node_modules,dist}/**/*'",
+    "lint": "eslint --cache --cache-location ./node_modules/.cache/.eslintcache --ext .ts .",
+    "prepare": "pnpm pgc"
+  },
+  "prisma": {
+    "schema": "./src/prisma/schema.prisma"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@ideanick/client": "workspace:*",
+    "@prisma/client": "^6.6.0",
+    "@trpc/server": "^11.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "lodash": "^4.17.21",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
+    "trpc-playground": "^1.0.4"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.1",
+    "@types/jsonwebtoken": "^9.0.9",
+    "@types/lodash": "^4.17.16",
+    "@types/node": "^22.14.1",
+    "@types/passport": "^1.0.17",
+    "@types/passport-jwt": "^4.0.1",
+    "eslint-plugin-node": "^11.1.0",
+    "prettier": "^3.5.3",
+    "prisma": "^6.6.0",
+    "rimraf": "^6.0.1",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.3"
+  }
+}
