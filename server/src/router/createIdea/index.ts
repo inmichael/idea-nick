@@ -2,12 +2,9 @@ import { trpc } from '../../lib/trpc';
 import { zCreateIdeaTrpcInput } from './input';
 
 export const createIdeaTrpcRoute = trpc.procedure.input(zCreateIdeaTrpcInput).mutation(async ({ input, ctx }) => {
-  // const ideaNick = ideas.find((idea) => idea.nick === input.nick);
-  // if (ideaNick) {
-  //   throw new Error('Idea with this nick already exists');
-  // }
-  // ideas.unshift(input);
-  // return true;
+  if (!ctx.me) {
+    throw new Error('UNAUTHORIZED');
+  }
 
   const exIdea = await ctx.prisma.idea.findUnique({
     where: {
@@ -19,7 +16,12 @@ export const createIdeaTrpcRoute = trpc.procedure.input(zCreateIdeaTrpcInput).mu
     throw new Error('Idea with this nick already exists');
   }
 
-  await ctx.prisma.idea.create({ data: input });
+  await ctx.prisma.idea.create({
+    data: {
+      ...input,
+      authorId: ctx.me.id,
+    },
+  });
 
   return true;
 });

@@ -1,10 +1,10 @@
 import { Link, Outlet } from 'react-router-dom';
 import { routes } from '../../lib/routes';
 import styles from './styles.module.scss';
-import { trpc } from '../../lib/trpc';
+import { useMe } from '../../lib/ctx';
 
 const Layout = () => {
-  const { data, isLoading, isFetching, isError } = trpc.getMe.useQuery();
+  const me = useMe();
 
   return (
     <div className={styles.layout}>
@@ -16,7 +16,7 @@ const Layout = () => {
               All Ideas
             </Link>
           </li>
-          {isLoading || isFetching || isError ? null : data?.me ? (
+          {me ? (
             <>
               <li className={styles.item}>
                 <Link className={styles.link} to={routes.newIdeaRoute}>
@@ -25,7 +25,7 @@ const Layout = () => {
               </li>
               <li className={styles.item}>
                 <Link className={styles.link} to={routes.signOutRoute}>
-                  Log Out {data.me.nick}
+                  Log Out {me.nick}
                 </Link>
               </li>
             </>

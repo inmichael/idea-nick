@@ -1,12 +1,18 @@
 import cn from 'classnames';
 import styles from './styles.module.scss';
+import { Link } from 'react-router-dom';
 
-interface IProps {
+export interface IButtonProps {
   children: React.ReactNode;
   loading?: boolean;
 }
 
-const Button = ({ children, loading }: IProps) => {
+interface ILinkButtonProps {
+  children: React.ReactNode;
+  to: string;
+}
+
+export const Button = ({ children, loading }: IButtonProps) => {
   return (
     <button
       className={cn({
@@ -21,4 +27,8 @@ const Button = ({ children, loading }: IProps) => {
   );
 };
 
-export default Button;
+export const LinkButton = ({ children, to }: ILinkButtonProps) => (
+  <Link className={styles.button} to={to}>
+    {children}
+  </Link>
+);

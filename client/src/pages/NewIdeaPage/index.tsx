@@ -1,37 +1,24 @@
-import { useFormik } from 'formik';
 import Segment from '../../components/Segment';
 import Input from '../../components/Input';
 import Textarea from '../../components/Textarea';
-import { withZodSchema } from 'formik-validator-zod';
 import { trpc } from '../../lib/trpc';
 import { zCreateIdeaTrpcInput } from '../../../../server/src/router/createIdea/input';
-import { useState } from 'react';
 import Alert from '../../components/Alert';
-import Button from '../../components/Button';
+import { Button } from '../../components/Button';
 import { FormItems } from '../../components/FormItems';
+import { useForm } from '../../lib/form';
 
 const NewIdeaPage = () => {
-  const [successMessageVisible, setSuccessMessageVisible] = useState(false);
-  const [submittingError, setSubmittingError] = useState<string | null>(null);
-  const { mutateAsync: createIdea } = trpc.createIdea.useMutation();
-  const formik = useFormik({
+  const createIdea = trpc.createIdea.useMutation();
+  const { formik, alertProps, buttonProps } = useForm({
     initialValues: { name: '', nick: '', description: '', text: '' },
-    onSubmit: async (values, actions) => {
-      try {
-        await createIdea(values);
-        actions.resetForm();
-        setSuccessMessageVisible(true);
-        setTimeout(() => {
-          setSuccessMessageVisible(false);
-        }, 3000);
-      } catch (error: any) {
-        setSubmittingError(error.message);
-        setTimeout(() => {
-          setSubmittingError(null);
-        }, 3000);
-      }
+    onSubmit: async (values) => {
+      await createIdea.mutateAsync(values);
+      formik.resetForm();
     },
-    validate: withZodSchema(zCreateIdeaTrpcInput),
+    validationSchema: zCreateIdeaTrpcInput,
+    successMessage: 'Idea created!',
+    showValidationAlert: true,
   });
 
   return (
@@ -50,12 +37,9 @@ const NewIdeaPage = () => {
           <Input label="Description" name="description" formik={formik} maxWidth={500} />
 
           <Textarea label="Text" name="text" formik={formik} />
-          {!formik.isValid && !!formik.submitCount && <p style={{ color: 'red' }}>Some fields are invalid</p>}
+          <Alert {...alertProps} />
 
-          {submittingError && <Alert color="red">{submittingError}</Alert>}
-          {successMessageVisible && <Alert color="green">Idea Created</Alert>}
-
-          <Button loading={formik.isSubmitting}>Create Idea</Button>
+          <Button {...buttonProps}>Create Idea</Button>
         </FormItems>
       </form>
     </Segment>
