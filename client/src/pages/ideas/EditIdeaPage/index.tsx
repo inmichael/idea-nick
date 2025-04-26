@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { trpc } from '../../../lib/trpc';
 import _ from 'lodash';
-import { zUpdateIdeaTrpcInput } from '../../../../../server/src/router/updateIdea/input';
+import { zUpdateIdeaTrpcInput } from '@ideanick/server/src/router/schemas';
 import { EditIdeaRouteParams, routes } from '../../../lib/routes';
 import Segment from '../../../components/Segment';
 import { FormItems } from '../../../components/FormItems';

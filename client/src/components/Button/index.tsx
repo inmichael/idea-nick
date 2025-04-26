@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 export interface IButtonProps {
   children: React.ReactNode;
   loading?: boolean;
+  disabled?: boolean;
 }
 
 interface ILinkButtonProps {
@@ -12,7 +13,7 @@ interface ILinkButtonProps {
   to: string;
 }
 
-export const Button = ({ children, loading }: IButtonProps) => {
+export const Button = ({ children, loading, disabled }: IButtonProps) => {
   return (
     <button
       className={cn({
@@ -20,7 +21,7 @@ export const Button = ({ children, loading }: IButtonProps) => {
         [styles.disabled]: loading,
       })}
       type="submit"
-      disabled={loading}
+      disabled={loading || disabled}
     >
       {loading ? 'Submitting...' : children}
     </button>

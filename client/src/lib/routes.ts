@@ -14,6 +14,7 @@ export const routes = {
   signUpRoute: '/sign-up',
   signInRoute: '/sign-in',
   signOutRoute: '/sign-out',
+  editProfileRoute: '/edit-profile',
   editIdeaRoute: ({ ideaNick }: EditIdeaRouteParams) => `/ideas/${ideaNick}/edit`,
   viewIdeaRoute: ({ ideaNick }: ViewIdeaRouteParams) => `/ideas/${ideaNick}`,
 };

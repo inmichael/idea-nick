@@ -1,5 +1,5 @@
 import { trpc } from '../../../lib/trpc';
-import { zSignInTrpcInput } from '../../../../../server/src/router/signIn/input';
+import { zSignInTrpcInput } from '@ideanick/server/src/router/schemas';
 import Segment from '../../../components/Segment';
 import { FormItems } from '../../../components/FormItems';
 import Input from '../../../components/Input';
@@ -36,7 +36,7 @@ const SignInPage = withPageWrapper({
           <Input label="Password" name="password" type="password" formik={formik} />
 
           <Alert {...alertProps} />
-          <Button {...buttonProps}>Sign Up</Button>
+          <Button {...buttonProps}>Sign In</Button>
         </FormItems>
       </form>
     </Segment>

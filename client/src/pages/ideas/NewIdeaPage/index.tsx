@@ -2,7 +2,7 @@ import Segment from '../../../components/Segment';
 import Input from '../../../components/Input';
 import Textarea from '../../../components/Textarea';
 import { trpc } from '../../../lib/trpc';
-import { zCreateIdeaTrpcInput } from '../../../../../server/src/router/createIdea/input';
+import { zCreateIdeaTrpcInput } from '@ideanick/server/src/router/schemas';
 import Alert from '../../../components/Alert';
 import { Button } from '../../../components/Button';
 import { FormItems } from '../../../components/FormItems';

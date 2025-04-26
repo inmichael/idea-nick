@@ -1,5 +1,5 @@
 import { trpc } from '../../../lib/trpc';
-import { zSignUpTrpcInput } from '../../../../../server/src/router/signUp/input';
+import { zSignUpTrpcInput } from '@ideanick/server/src/router/schemas';
 import { z } from 'zod';
 import Segment from '../../../components/Segment';
 import { FormItems } from '../../../components/FormItems';

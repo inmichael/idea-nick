@@ -4,7 +4,7 @@ import { editIdeaRouteParams, routes, viewRouteParams } from './lib/routes';
 import Layout from './components/Layout';
 import './styles/global.scss';
 import { AppContextProvider } from './lib/ctx';
-import { SignInPage, SignOutPage, SignUpPage } from './pages/auth';
+import { EditProfilePage, SignInPage, SignOutPage, SignUpPage } from './pages/auth';
 import { AllIdeasPage, EditIdeaPage, NewIdeaPage, ViewIdeaPage } from './pages/ideas';
 import { NotFoundPage } from './pages/other';
 
@@ -20,6 +20,7 @@ const App = () => {
               <Route path={routes.signInRoute} element={<SignInPage />} />
               <Route path={routes.allIdeasRoute} element={<AllIdeasPage />} />
               <Route path={routes.newIdeaRoute} element={<NewIdeaPage />} />
+              <Route path={routes.editProfileRoute} element={<EditProfilePage />} />
               <Route path={routes.viewIdeaRoute(viewRouteParams)} element={<ViewIdeaPage />} />
               <Route path={routes.editIdeaRoute(editIdeaRouteParams)} element={<EditIdeaPage />} />
               <Route path="*" element={<NotFoundPage />} />

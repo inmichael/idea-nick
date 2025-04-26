@@ -24,8 +24,13 @@ const Layout = () => {
                 </Link>
               </li>
               <li className={styles.item}>
+                <Link className={styles.link} to={routes.editProfileRoute}>
+                  Edit Profile
+                </Link>
+              </li>
+              <li className={styles.item}>
                 <Link className={styles.link} to={routes.signOutRoute}>
-                  Log Out {me.nick}
+                  Log Out ({me.nick})
                 </Link>
               </li>
             </>
