@@ -19,11 +19,12 @@ export const Button = ({ children, loading, disabled }: IButtonProps) => {
       className={cn({
         [styles.button]: true,
         [styles.disabled]: loading,
+        [styles.loading]: loading,
       })}
       type="submit"
       disabled={loading || disabled}
     >
-      {loading ? 'Submitting...' : children}
+      <span className={styles.text}>{children}</span>
     </button>
   );
 };

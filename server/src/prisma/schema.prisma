@@ -18,14 +18,15 @@ model User {
 }
 
 model Idea {
-  id          String   @id @default(uuid())
-  nick        String   @unique
-  name        String
-  description String
-  text        String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  authorId    String
+  id           String   @id @default(uuid())
+  nick         String   @unique
+  name         String
+  description  String
+  text         String
+  serialNumber Int      @unique @default(autoincrement())
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  authorId     String
 
   author User @relation(fields: [authorId], references: [id])
 }

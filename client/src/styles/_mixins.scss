@@ -1,3 +1,4 @@
+@use 'sass:math';
 @import './vars';
 @import '../../node_modules/include-media/dist/include-media';
 
@@ -20,4 +21,34 @@
 @mixin h2 {
   font-size: 24px;
   font-weight: bold;
+}
+
+@mixin loader($borderWidth, $size, $color) {
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    text-indent: -9999em;
+    transform: translateZ(0);
+    animation: spin 1.1s infinite linear;
+    border: $borderWidth solid rgba($color, 0.2);
+    border-left: $borderWidth solid $color;
+    width: $size;
+    height: $size;
+    margin-left: math.div(-$size, 2);
+    margin-top: math.div(-$size, 2);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
