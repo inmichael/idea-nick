@@ -3,7 +3,6 @@ import { trpc } from '../../lib/trpc';
 import _ from 'lodash';
 import { zUpdateIdeaTrpcInput } from '../../../../server/src/router/updateIdea/input';
 import { EditIdeaRouteParams, routes } from '../../lib/routes';
-import { TrpcRouterOutput } from '@/server/src/router';
 import Segment from '../../components/Segment';
 import { FormItems } from '../../components/FormItems';
 import Input from '../../components/Input';
@@ -11,13 +10,26 @@ import Textarea from '../../components/Textarea';
 import Alert from '../../components/Alert';
 import { Button } from '../../components/Button';
 import { useForm } from '../../lib/form';
-import { useMe } from '../../lib/ctx';
+import { withPageWrapper } from '../../lib/pageWrapper';
 
-interface IProps {
-  idea: NonNullable<TrpcRouterOutput['getIdea']['idea']>;
-}
+const EditIdeaPage = withPageWrapper({
+  authorizedOnly: true,
+  useQuery: () => {
+    const { ideaNick } = useParams() as EditIdeaRouteParams;
 
-const EditIdeaComponent: React.FC<IProps> = ({ idea }) => {
+    return trpc.getIdea.useQuery({
+      ideaNick,
+    });
+  },
+
+  setProps: ({ queryResult, ctx, checkExists, checkAccess }) => {
+    const idea = checkExists(queryResult.data?.idea, 'Idea not found');
+    checkAccess(ctx.me?.id === idea.authorId, 'An idea can only be edited by the author');
+    return {
+      idea,
+    };
+  },
+})(({ idea }) => {
   const navigate = useNavigate();
   const updateIdea = trpc.updateIdea.useMutation();
   const { formik, alertProps, buttonProps } = useForm({
@@ -46,37 +58,6 @@ const EditIdeaComponent: React.FC<IProps> = ({ idea }) => {
       </form>
     </Segment>
   );
-};
-
-const EditIdeaPage = () => {
-  const { ideaNick } = useParams<EditIdeaRouteParams>();
-
-  const getIdeaResult = trpc.getIdea.useQuery({ ideaNick: ideaNick! });
-  const me = useMe();
-
-  if (getIdeaResult.isLoading || getIdeaResult.isFetching) {
-    return <span>Loading...</span>;
-  }
-
-  if (getIdeaResult.isError) {
-    return <span>Error: {getIdeaResult.error.message}</span>;
-  }
-
-  if (!getIdeaResult.data?.idea) {
-    return <span>Idea not found</span>;
-  }
-
-  const idea = getIdeaResult.data.idea;
-
-  if (!me) {
-    return <span>Only for authorized</span>;
-  }
-
-  if (me.id !== idea.authorId) {
-    return <span>An idea can only be edited by the author</span>;
-  }
-
-  return <EditIdeaComponent idea={idea} />;
-};
+});
 
 export default EditIdeaPage;

@@ -7,12 +7,12 @@ import Input from '../../components/Input';
 import Alert from '../../components/Alert';
 import { Button } from '../../components/Button';
 import Cookies from 'js-cookie';
-import { useNavigate } from 'react-router-dom';
-import { routes } from '../../lib/routes';
 import { useForm } from '../../lib/form';
+import { withPageWrapper } from '../../lib/pageWrapper';
 
-const SignUpPage = () => {
-  const navigate = useNavigate();
+const SignUpPage = withPageWrapper({
+  redirectAuthorized: true,
+})(() => {
   const trpcUtils = trpc.useUtils();
   const signUp = trpc.signUp.useMutation();
   const { formik, alertProps, buttonProps } = useForm({
@@ -38,7 +38,6 @@ const SignUpPage = () => {
       const { token } = await signUp.mutateAsync(values);
       Cookies.set('token', token, { expires: 9999 });
       trpcUtils.invalidate();
-      navigate(routes.allIdeasRoute);
     },
     resetOnSuccess: false,
   });
@@ -56,6 +55,6 @@ const SignUpPage = () => {
       </form>
     </Segment>
   );
-};
+});
 
 export default SignUpPage;

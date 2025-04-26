@@ -11,6 +11,7 @@ import SignInPage from './pages/SignInPage';
 import { SignOutPage } from './pages/SignOutPage';
 import EditIdeaPage from './pages/EditIdeaPage';
 import { AppContextProvider } from './lib/ctx';
+import NotFoundPage from './pages/NotFoundPage';
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
               <Route path={routes.newIdeaRoute} element={<NewIdeaPage />} />
               <Route path={routes.viewIdeaRoute(viewRouteParams)} element={<ViewIdeaPage />} />
               <Route path={routes.editIdeaRoute(editIdeaRouteParams)} element={<EditIdeaPage />} />
+              <Route path="*" element={<NotFoundPage />} />
             </Route>
           </Routes>
         </BrowserRouter>
