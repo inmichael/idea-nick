@@ -6,6 +6,7 @@ import Segment from '../../../components/Segment';
 import { format } from 'date-fns';
 import { LinkButton } from '../../../components/Button';
 import { withPageWrapper } from '../../../lib/pageWrapper';
+import LikeButton from './LikeButton';
 
 const ViewIdeaPage = withPageWrapper({
   useQuery: () => {
@@ -19,6 +20,7 @@ const ViewIdeaPage = withPageWrapper({
     idea: checkExists(queryResult.data?.idea, 'Idea not found'),
     me: ctx.me,
   }),
+  showLoaderOnFetching: false,
 })(({ idea, me }) => (
   <Segment title={idea.name} description={idea.description}>
     <div className={styles.createdAt}>Created At: {format(idea.createdAt, 'yyyy-MM-dd')}</div>
@@ -28,6 +30,15 @@ const ViewIdeaPage = withPageWrapper({
       </p>
     </div>
     <div className={styles.text} dangerouslySetInnerHTML={{ __html: idea.text }} />
+    <div className={styles.likes}>
+      Likes: {idea.likesCount}
+      {me && (
+        <>
+          <br />
+          <LikeButton idea={idea} />
+        </>
+      )}
+    </div>
     {me?.id === idea.authorId && (
       <div className={styles.editButton}>
         <LinkButton to={routes.editIdeaRoute({ ideaNick: idea.nick })}>Edit Idea</LinkButton>

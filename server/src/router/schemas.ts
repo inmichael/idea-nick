@@ -5,3 +5,4 @@ export { zUpdatePasswordTrpcInput } from './auth/updatePassword/input';
 export { zGetIdeasTrpcInput } from './ideas/getIdeas/input';
 export { zCreateIdeaTrpcInput } from './ideas/createIdea/input';
 export { zUpdateIdeaTrpcInput } from './ideas/updateIdea/input';
+export { zSetIdeaLikeTrpcInput } from './ideas/setIdeaLike/input';

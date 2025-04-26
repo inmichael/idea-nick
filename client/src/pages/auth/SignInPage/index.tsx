@@ -8,6 +8,8 @@ import { Button } from '../../../components/Button';
 import Cookies from 'js-cookie';
 import { useForm } from '../../../lib/form';
 import { withPageWrapper } from '../../../lib/pageWrapper';
+import { Link } from 'react-router-dom';
+import { routes } from '../../../lib/routes';
 
 const SignInPage = withPageWrapper({
   redirectAuthorized: true,
@@ -39,6 +41,10 @@ const SignInPage = withPageWrapper({
           <Button {...buttonProps}>Sign In</Button>
         </FormItems>
       </form>
+
+      <p style={{ marginTop: 15 }}>
+        Don't have an account? <Link to={routes.signUpRoute}>Sign Up</Link>
+      </p>
     </Segment>
   );
 });
