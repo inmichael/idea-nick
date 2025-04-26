@@ -1,13 +1,13 @@
-import Segment from '../../components/Segment';
-import Input from '../../components/Input';
-import Textarea from '../../components/Textarea';
-import { trpc } from '../../lib/trpc';
-import { zCreateIdeaTrpcInput } from '../../../../server/src/router/createIdea/input';
-import Alert from '../../components/Alert';
-import { Button } from '../../components/Button';
-import { FormItems } from '../../components/FormItems';
-import { useForm } from '../../lib/form';
-import { withPageWrapper } from '../../lib/pageWrapper';
+import Segment from '../../../components/Segment';
+import Input from '../../../components/Input';
+import Textarea from '../../../components/Textarea';
+import { trpc } from '../../../lib/trpc';
+import { zCreateIdeaTrpcInput } from '../../../../../server/src/router/createIdea/input';
+import Alert from '../../../components/Alert';
+import { Button } from '../../../components/Button';
+import { FormItems } from '../../../components/FormItems';
+import { useForm } from '../../../lib/form';
+import { withPageWrapper } from '../../../lib/pageWrapper';
 
 const NewIdeaPage = withPageWrapper({
   authorizedOnly: true,

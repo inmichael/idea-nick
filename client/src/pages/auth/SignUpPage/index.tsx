@@ -1,14 +1,14 @@
-import { trpc } from '../../lib/trpc';
-import { zSignUpTrpcInput } from '../../../../server/src/router/signUp/input';
+import { trpc } from '../../../lib/trpc';
+import { zSignUpTrpcInput } from '../../../../../server/src/router/signUp/input';
 import { z } from 'zod';
-import Segment from '../../components/Segment';
-import { FormItems } from '../../components/FormItems';
-import Input from '../../components/Input';
-import Alert from '../../components/Alert';
-import { Button } from '../../components/Button';
+import Segment from '../../../components/Segment';
+import { FormItems } from '../../../components/FormItems';
+import Input from '../../../components/Input';
+import Alert from '../../../components/Alert';
+import { Button } from '../../../components/Button';
 import Cookies from 'js-cookie';
-import { useForm } from '../../lib/form';
-import { withPageWrapper } from '../../lib/pageWrapper';
+import { useForm } from '../../../lib/form';
+import { withPageWrapper } from '../../../lib/pageWrapper';
 
 const SignUpPage = withPageWrapper({
   redirectAuthorized: true,

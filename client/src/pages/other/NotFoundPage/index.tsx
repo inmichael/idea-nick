@@ -1,4 +1,4 @@
-import ErrorPageComponent from '../../components/ErrorPageComponent';
+import ErrorPageComponent from '../../../components/ErrorPageComponent';
 
 interface IProps {
   title?: string;

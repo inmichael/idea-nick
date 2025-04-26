@@ -1,13 +1,13 @@
-import { trpc } from '../../lib/trpc';
-import { zSignInTrpcInput } from '../../../../server/src/router/signIn/input';
-import Segment from '../../components/Segment';
-import { FormItems } from '../../components/FormItems';
-import Input from '../../components/Input';
-import Alert from '../../components/Alert';
-import { Button } from '../../components/Button';
+import { trpc } from '../../../lib/trpc';
+import { zSignInTrpcInput } from '../../../../../server/src/router/signIn/input';
+import Segment from '../../../components/Segment';
+import { FormItems } from '../../../components/FormItems';
+import Input from '../../../components/Input';
+import Alert from '../../../components/Alert';
+import { Button } from '../../../components/Button';
 import Cookies from 'js-cookie';
-import { useForm } from '../../lib/form';
-import { withPageWrapper } from '../../lib/pageWrapper';
+import { useForm } from '../../../lib/form';
+import { withPageWrapper } from '../../../lib/pageWrapper';
 
 const SignInPage = withPageWrapper({
   redirectAuthorized: true,

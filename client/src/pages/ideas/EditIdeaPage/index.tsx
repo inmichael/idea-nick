@@ -1,16 +1,16 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import { trpc } from '../../lib/trpc';
+import { trpc } from '../../../lib/trpc';
 import _ from 'lodash';
-import { zUpdateIdeaTrpcInput } from '../../../../server/src/router/updateIdea/input';
-import { EditIdeaRouteParams, routes } from '../../lib/routes';
-import Segment from '../../components/Segment';
-import { FormItems } from '../../components/FormItems';
-import Input from '../../components/Input';
-import Textarea from '../../components/Textarea';
-import Alert from '../../components/Alert';
-import { Button } from '../../components/Button';
-import { useForm } from '../../lib/form';
-import { withPageWrapper } from '../../lib/pageWrapper';
+import { zUpdateIdeaTrpcInput } from '../../../../../server/src/router/updateIdea/input';
+import { EditIdeaRouteParams, routes } from '../../../lib/routes';
+import Segment from '../../../components/Segment';
+import { FormItems } from '../../../components/FormItems';
+import Input from '../../../components/Input';
+import Textarea from '../../../components/Textarea';
+import Alert from '../../../components/Alert';
+import { Button } from '../../../components/Button';
+import { useForm } from '../../../lib/form';
+import { withPageWrapper } from '../../../lib/pageWrapper';
 
 const EditIdeaPage = withPageWrapper({
   authorizedOnly: true,
