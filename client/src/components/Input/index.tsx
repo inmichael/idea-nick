@@ -7,7 +7,7 @@ interface IProps {
   name: string;
   label: string;
   formik: FormikProps<any>;
-  maxWidth?: number;
+  maxWidth?: number | string;
   type?: HTMLInputTypeAttribute;
 }
 

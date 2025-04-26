@@ -11,7 +11,7 @@ interface IProps<TZodSchema extends z.ZodTypeAny> {
   initialValues?: z.infer<TZodSchema>;
   validationSchema?: TZodSchema;
   showValidationAlert?: boolean;
-  onSubmit: (values: z.infer<TZodSchema>, actions: FormikHelpers<z.infer<TZodSchema>>) => Promise<any> | any;
+  onSubmit?: (values: z.infer<TZodSchema>, actions: FormikHelpers<z.infer<TZodSchema>>) => Promise<any> | any;
 }
 
 export const useForm = <TZodSchema extends z.ZodTypeAny>({
@@ -29,6 +29,8 @@ export const useForm = <TZodSchema extends z.ZodTypeAny>({
     initialValues,
     ...(validationSchema && { validate: withZodSchema(validationSchema) }),
     onSubmit: async (values, FormikHelpers) => {
+      if (!onSubmit) return;
+
       try {
         setSubmittingError(null);
         await onSubmit(values, FormikHelpers);
