@@ -7,6 +7,8 @@ import { format } from 'date-fns';
 import { LinkButton } from '../../../components/Button';
 import { withPageWrapper } from '../../../lib/pageWrapper';
 import LikeButton from './LikeButton';
+import { canBlockIdeas } from '@ideaNick/server/src/utils/can';
+import BlockIdea from './BlockIdea';
 
 const ViewIdeaPage = withPageWrapper({
   useQuery: () => {
@@ -42,6 +44,11 @@ const ViewIdeaPage = withPageWrapper({
     {me?.id === idea.authorId && (
       <div className={styles.editButton}>
         <LinkButton to={routes.editIdeaRoute({ ideaNick: idea.nick })}>Edit Idea</LinkButton>
+      </div>
+    )}
+    {canBlockIdeas(me) && (
+      <div className={styles.blockIdea}>
+        <BlockIdea idea={idea} />
       </div>
     )}
   </Segment>

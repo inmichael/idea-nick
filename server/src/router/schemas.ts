@@ -3,6 +3,7 @@ export { zSignUpTrpcInput } from './auth/signUp/input';
 export { zUpdateProfileTrpcInput } from './auth/updateProfile/input';
 export { zUpdatePasswordTrpcInput } from './auth/updatePassword/input';
 export { zGetIdeasTrpcInput } from './ideas/getIdeas/input';
+export { zBlockIdeaTrpcInput } from './ideas/blockIdea/input';
 export { zCreateIdeaTrpcInput } from './ideas/createIdea/input';
 export { zUpdateIdeaTrpcInput } from './ideas/updateIdea/input';
 export { zSetIdeaLikeTrpcInput } from './ideas/setIdeaLike/input';

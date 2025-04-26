@@ -8,6 +8,7 @@ import {
   updateProfileTrpcRoute,
 } from './auth';
 import {
+  blockIdeaTrpcRoute,
   createIdeaTrpcRoute,
   getIdeasTrpcRoute,
   getIdeaTrpcRoute,
@@ -19,6 +20,7 @@ export const trpcRouter = trpc.router({
   getMe: getMeTrpcRoute,
   getIdea: getIdeaTrpcRoute,
   getIdeas: getIdeasTrpcRoute,
+  blockIdea: blockIdeaTrpcRoute,
   createIdea: createIdeaTrpcRoute,
   updateIdea: updateIdeaTrpcRoute,
   updateProfile: updateProfileTrpcRoute,
