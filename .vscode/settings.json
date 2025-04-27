@@ -1,5 +1,5 @@
 {
-  "cSpell.words": ["autoincrement", "ideanick"],
+  "cSpell.words": ["autoincrement", "ideanick", "mjml"],
   "eslint.workingDirectories": ["server", "client"],
   "importCost.debug": false
 }

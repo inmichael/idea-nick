@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "ts-node-dev --watch ./.env --rs ./src/index.ts",
     "build": "rimraf ./dist && tsc --build ./tsconfig.json",
+    "build-emails": "rimraf ./src/emails/dist && mkdir ./src/emails/dist && mjml ./src/emails/[!_]*.mjml -o ./src/emails/dist",
     "start": "node ./dist/index.js",
     "pmd": "prisma migrate dev",
     "pmr": "prisma migrate reset",
@@ -29,6 +30,7 @@
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
+    "mjml": "^4.15.3",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
     "trpc-playground": "^1.0.4"
