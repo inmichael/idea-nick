@@ -1,6 +1,7 @@
 import { trpc } from '../../../../lib/trpc';
 import type { TrpcRouterOutput } from '@ideaNick/server/src/router';
 import styles from '../styles.module.scss';
+import Icon from '../../../../components/Icon';
 
 const LikeButton = ({ idea }: { idea: NonNullable<TrpcRouterOutput['getIdea']['idea']> }) => {
   const trpcUtils = trpc.useUtils();
@@ -34,7 +35,7 @@ const LikeButton = ({ idea }: { idea: NonNullable<TrpcRouterOutput['getIdea']['i
         setIdeaLike.mutateAsync({ ideaId: idea.id, isLikedByMe: !idea.isLikedByMe });
       }}
     >
-      {idea.isLikedByMe ? 'Unlike' : 'Like'}
+      <Icon name={idea.isLikedByMe ? 'likeField' : 'likeEmpty'} size={32} className={styles.likeIcon} />
     </button>
   );
 };
