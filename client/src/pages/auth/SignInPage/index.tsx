@@ -13,6 +13,7 @@ import { routes } from '../../../lib/routes';
 
 const SignInPage = withPageWrapper({
   redirectAuthorized: true,
+  title: 'Sign In',
 })(() => {
   const trpcUtils = trpc.useUtils();
   const signIn = trpc.signIn.useMutation();
